@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="300"></canvas>
+    
+    <script>
+        var canvas = document.getElementById('canvas')
+        var c = canvas.getContext('2d')
+        
+        // 1. 画圆和圆弧的方法？？
+        // c.arc()
+
+        // 2. 画线段
+        c.beginPath()
+        c.moveTo(0,0)
+        c.lineTo(100,100)
+        c.lineWidth = 10
+        c.stroke()
+        c.closePath()
+
+        // 3.文本
+        // var x = canvas.width
+        // setInterval(function(){
+
+        //     canvas.width = canvas.width
+
+        //     c.font = '40px Arial'
+        //     x--
+        //     c.fillText('今天他妈的热死了，还有人去学车？？666',x,100)
+        // },1)
+
+        // 4. 矩形
+        c.fillRect(0,0,100,100)
+        
+    </script>
+</body>
+</html>
