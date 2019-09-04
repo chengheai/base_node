@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="/pages?page=1">跳到文章1</a>
+    <a href="/pages?page=2">跳到文章2</a>
+    <h1>form表单测试</h1>
+    <form action="/pages" method="GET">
+        <input type="text" name="page">
+        <input type="submit" value="获取这个txt">
+    </form>
+
+    <form action="/login" method="POST">
+        <input type="text" name="username" id="">
+        <input type="text" name="password">
+        <input type="submit" value="提交登录">
+    </form>
+
+    <script>
+        var xhr = new XMLHttpRequest() //实例化一个ajax请求对象
+        xhr.open('POST', '/login', true) //调用open方法
+
+        xhr.setRequestHeader('Content-Type', 'text/json') //设置请求头
+
+        xhr.send(JSON.stringify({ username: '111', password: '222' })) //发送post数据
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(xhr.response)
+            }
+        }
+
+
+        function setCookie(c_name, value, expiredays) {
+            var exdate = new Date()
+            exdate.setDate(exdate.getDate() + expiredays)
+            document.cookie = c_name + "=" + escape(value) +
+                ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
+        }
+        function getCookie(c_name) {
+            if (document.cookie.length > 0) {
+                c_start = document.cookie.indexOf(c_name + "=")
+                if (c_start != -1) {
+                    c_start = c_start + c_name.length + 1
+                    c_end = document.cookie.indexOf(";", c_start)
+                    if (c_end == -1) c_end = document.cookie.length
+                    return unescape(document.cookie.substring(c_start, c_end))
+                }
+            }
+            return ""
+        }
+    </script>
+</body>
+
+</html>
